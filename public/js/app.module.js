@@ -1,1 +1,1 @@
-var indicadoresApp = angular.module('indicadoresApp', ['ngRoute', 'ngAnimate']);
+angular.module('indicadoresApp', ['ngRoute','ngAnimate','chart.js']);

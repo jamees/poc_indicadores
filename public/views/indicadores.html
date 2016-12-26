@@ -1,7 +1,12 @@
-<h2>Indicadores
-</h2>
+<h2>Indicadores</h2>
 
+<canvas id="line" class="chart chart-line" 
+        chart-data="data" 
+        chart-labels="labels" 
 
+        chart-options="options" 
+        chart-dataset-override="datasetOverride" 
+></canvas>
 
 <input ng-model="inputMsg" type="text"/>
 <button ng-click="sendMsg()">Agregar</button>
@@ -16,6 +21,4 @@
     <span>{{ nemo.tipo }}</span> {{ nemo.des }}
   </li>
 </ul>
-
-
 

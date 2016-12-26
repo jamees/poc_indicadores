@@ -1,4 +1,4 @@
-indicadoresApp.factory('nemotecnicos', function ($http) {
+angular.module('indicadoresApp').factory('nemotecnicos', function ($http) {
 
     var urlServidor = 'http://nb379:777/rest';
 

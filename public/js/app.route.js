@@ -1,4 +1,4 @@
-indicadoresApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
+angular.module('indicadoresApp').config(['$routeProvider', '$locationProvider', '$httpProvider',
   function($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
       .when('/indicadores', {

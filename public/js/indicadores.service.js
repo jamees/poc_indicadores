@@ -1,4 +1,4 @@
-indicadoresApp.service('indicadores', function($http){
+angular.module('indicadoresApp').service('indicadores', function($http){
 
 
   this.showConsole = function(){

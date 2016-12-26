@@ -73,13 +73,8 @@ io.on('connection', function(socket){
 
     // Every 1 second, sends a message to a random client:
     setInterval(function() {
-        var randomClient;
-        if (clients.length > 0) {
-            randomClient = Math.floor(Math.random() * clients.length);
-            clients[randomClient].emit('random', Math.random() * 100);
-            //console.log('Message send');
-        }
-    }, 2000);
+       io.emit('random', Math.random() * 100);
+    }, 5000);
 
 });
 
