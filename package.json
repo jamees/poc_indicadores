@@ -1,0 +1,17 @@
+{
+  "name": "poc_indicadores",
+  "version": "0.0.1",
+  "description": "Aplicacion simple de indicadores",
+  "main": "server.js",
+  "dependencies": {
+    "angular-chartist.js": "^3.3.12",
+    "express": "~3.x",
+    "express-session": "^1.13.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "James",
+  "license": "ISC",
+  "devDependencies": {}
+}
