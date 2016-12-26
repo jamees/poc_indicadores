@@ -1,6 +1,6 @@
 indicadoresApp.factory('nemotecnicos', function ($http) {
 
-    var urlServidor = 'http://localhost:777/rest';
+    var urlServidor = 'http://nb379:777/rest';
 
     var obtenerNemos = function () {
         // Angular $http() and then() both return promises themselves

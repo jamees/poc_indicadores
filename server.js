@@ -8,6 +8,7 @@ var http = require('http');
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var clients = [];
 
 //Constantes
 var url = 'http://www.banchileinversiones.cl/moviles.rest/servicios/';
@@ -52,14 +53,37 @@ app.post('/rest', function (req, res) {
 });
 
 io.on('connection', function(socket){
-  console.log('a user connected');
+    
+    console.log('a user connected (id='+ socket.id +')');
+    clients.push(socket);
 
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    io.emit('chat message', msg);
-  });
+    // When socket disconnects, remove it from the list:
+    socket.on('disconnect', function() {
+        var index = clients.indexOf(socket);
+        if (index != -1) {
+            clients.splice(index, 1);
+            console.info('Client gone (id=' + socket.id + ').');
+        }
+    });
+
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+        io.emit('chat message', msg);
+    });
+
+    // Every 1 second, sends a message to a random client:
+    setInterval(function() {
+        var randomClient;
+        if (clients.length > 0) {
+            randomClient = Math.floor(Math.random() * clients.length);
+            clients[randomClient].emit('random', Math.random() * 100);
+            //console.log('Message send');
+        }
+    }, 2000);
 
 });
+
+
 
 
 // Escucha en el puerto 8080 y corre el server

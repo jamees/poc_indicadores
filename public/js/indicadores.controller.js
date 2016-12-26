@@ -4,6 +4,7 @@ indicadoresApp.controller('IndicadoresCtrl',
     this.params = $routeParams;
 
     var messages = [];
+    var randoms = [];
 
     var dataNemos = nemotecnicos.obtenerNemos();
     dataNemos.then(function(result) {
@@ -25,4 +26,12 @@ indicadoresApp.controller('IndicadoresCtrl',
         socket.emit('chat message', $scope.inputMsg + " " +Math.random());
         console.log($scope.messages);
     }
+
+    socket.on('random', function(msg){
+     	  randoms.push({"num": msg});
+        $scope.randoms=randoms;
+        //Se forza la actualización del front
+        $scope.$apply();
+    });
+
 });
