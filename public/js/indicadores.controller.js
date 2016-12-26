@@ -3,11 +3,8 @@ indicadoresApp.controller('IndicadoresCtrl',
     this.name = 'IndicadoresCtrl';
     this.params = $routeParams;
 
-
     var myDataPromise = myService.getData();
     myDataPromise.then(function(result) {
-
-       // this is only run after getData() resolves
        $scope.nemos = result;
        console.log($scope.nemos);
     });

@@ -6,7 +6,8 @@
   "dependencies": {
     "angular-chartist.js": "^3.3.12",
     "express": "~3.x",
-    "express-session": "^1.13.0"
+    "express-session": "^1.13.0",
+	"request": "latest"
   },
   "scripts": {
     "start": "node server.js"

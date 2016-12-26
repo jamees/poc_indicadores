@@ -1,6 +1,6 @@
 indicadoresApp.factory('myService', function($http) {
 
-    var urlServidor = 'http://localhost:3000';
+    var urlServidor = 'http://localhost:777/rest';
 
     var getData = function() {
         // Angular $http() and then() both return promises themselves
