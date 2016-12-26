@@ -4,6 +4,11 @@ var express = require('express');
 var request = require('request');
 var app = express();
 
+var http = require('http');
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+
 //Constantes
 var url = 'http://www.banchileinversiones.cl/moviles.rest/servicios/';
 var proxy = 'http://proxy2:8080';
@@ -26,8 +31,6 @@ app.configure(function() {
     });
 });
 
-
-
 // Carga una vista HTML simple donde irá nuestra Single App Page
 // Angular Manejará el Frontend
 app.get('*', function(req, res) {
@@ -48,7 +51,20 @@ app.post('/rest', function (req, res) {
 
 });
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+    io.emit('chat message', msg);
+  });
+
+});
+
+
 // Escucha en el puerto 8080 y corre el server
-app.listen(777, function() {
+server.listen(777, function() {
     console.log('App listening on port 777');
 });
+
+
