@@ -9,15 +9,6 @@
 
 <body ng-app="indicadoresApp" ng-cloak>
 
-<ul id="messages">
-</ul>
-
-
-<form action="">
-  <input id="m" autocomplete="off" /><button>Send</button>
-</form>
-
-
   <div ng-view> </div>
     <!-- Angular Material requires Angular.js Libraries -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -31,6 +22,7 @@
 
     <!-- Your application bootstrap  -->
     <script src="js/app.module.js"></script>
+    <script src="js/app.factory.js"></script>
     <!-- <script src="js/app.constants.js"></script> -->
     <script src="js/indicadores.service.js"></script>
     <script src="js/indicadores.factory.js"></script>
@@ -47,22 +39,6 @@
     <!--<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>-->
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-
-
-    <script>
-      
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-        
-      });
-      
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
-    </script>
 
 </body>
 

@@ -2,10 +2,18 @@
 </h2>
 
 
+
+<input ng-model="inputMsg" type="text"/>
+<button ng-click="sendMsg()">Agregar</button>
+
+<div ng-repeat="message in messages">{{message.text}}</div>
+
+
 <ul>
   <li ng-repeat="nemo in nemos">
     <span>{{ nemo.tipo }}</span> {{ nemo.des }}
   </li>
 </ul>
+
 
 
