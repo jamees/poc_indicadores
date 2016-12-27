@@ -1,19 +1,41 @@
 <h2>Indicadores</h2>
 
-<canvas id="line" class="chart chart-line" 
-        chart-data="data" 
-        chart-labels="labels" 
+ <div flex-xs flex-gt-xs="50" layout="column">
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Real Time Chart</span>
+    </md-card-title-text>
+   </md-card-title>
+  <md-card-content>
+    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-options="options" chart-dataset-override="datasetOverride"></canvas>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-switch ng-model="realtime" aria-label="Switch 1" class="md-primary"></md-switch>
+  </md-card-actions>
+</md-card>
 
-        chart-options="options" 
-        chart-dataset-override="datasetOverride" 
-></canvas>
+<md-card>
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Real Time Chart</span>
+    </md-card-title-text>
+   </md-card-title>
+  <md-card-content>
+      <md-input-container>
+        <label>Mensaje</label>
+        <input ng-model="inputMsg">
+      </md-input-container>
+      <md-button ng-click="sendMsg()">Agregar</md-button>
+      <div ng-repeat="message in messages">{{message.text}}</div>
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+   
+  </md-card-actions>
+</md-card>
 
-<input ng-model="inputMsg" type="text"/>
-<button ng-click="sendMsg()">Agregar</button>
+ </div>
 
-<div ng-repeat="message in messages">{{message.text}}</div>
-
-<div ng-repeat="random in randoms">{{random.num}}</div>
 
 
 <ul>
@@ -21,4 +43,3 @@
     <span>{{ nemo.tipo }}</span> {{ nemo.des }}
   </li>
 </ul>
-

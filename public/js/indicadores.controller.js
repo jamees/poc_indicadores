@@ -6,7 +6,7 @@ angular.module('indicadoresApp').controller('IndicadoresCtrl',
 
 
     var messages = [];
-    var randoms = [];
+    
     var i=0;
     var dataNemos = nemotecnicos.obtenerNemos();
 
@@ -20,7 +20,6 @@ angular.module('indicadoresApp').controller('IndicadoresCtrl',
         console.log('Recibido:' +msg);
      	  messages.push({"text": msg});
         $scope.messages=messages;
-        //Se forza la actualización del front
         $scope.$apply();
     });
 
@@ -31,13 +30,21 @@ angular.module('indicadoresApp').controller('IndicadoresCtrl',
     }
 
     socket.on('random', function(msg){
-     	  randoms.push({"num": msg});
-        $scope.randoms=randoms;
-        $scope.labels.push(i);
-        $scope.data[0].push(msg);
-        i++;
-        //Se forza la actualización del front
-        $scope.$apply();
+        
+      
+          if($scope.labels.length > 15){
+              $scope.labels.shift();
+              $scope.data[0].shift();
+          }
+          $scope.labels.push(i);
+          if($scope.realtime){
+            $scope.data[0].push(msg);
+           }else{
+              $scope.data[0].push(0);
+           }
+          i++;
+          $scope.$apply();
+       
     });
 
 
@@ -47,6 +54,7 @@ angular.module('indicadoresApp').controller('IndicadoresCtrl',
  
     $scope.datasetOverride = [{ yAxisID: 'y-axis-1' }, { yAxisID: 'y-axis-2' }];
     $scope.options = {
+      animation : false,
       scales: {
         yAxes: [
           {
